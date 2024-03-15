@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "819aa286-5b5f-42d9-ad77-23219ad6aadd",
+		"name": "CloudTaskPatrónProductorConsumidor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "funcion-tutorial-productor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"mensaje\" : \"Contenido de la tarea\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{region}}-{{id_project}}.cloudfunctions.net/funcion-tutorial-productor",
+					"protocol": "https",
+					"host": [
+						"{{region}}-{{id_project}}",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"funcion-tutorial-productor"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id_project",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "region",
+			"value": "us-central1",
+			"type": "default"
+		}
+	]
+}
