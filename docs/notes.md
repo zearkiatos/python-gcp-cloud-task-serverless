@@ -18,3 +18,9 @@ $ gcloud projects add-iam-policy-binding miso-cloud-native-414617 --member="serv
 # gcloud tasks queues create cola-cloud-task-tutorial --location=us-central1
 $ gcloud tasks queues create queue-cloud-task --location=us-central1
 ```
+
+## Create function with service account
+```sh
+# gcloud functions deploy funcion-tutorial-productor --entry-point producir --runtime python39 --trigger-http --allow-unauthenticated --memory 128MB --region us-central1 --timeout 60 --min-instances 0 --max-instances 1 --service-account "misw-das-productor@<PROJECT_ID>.iam.gserviceaccount.com" --set-env-vars LOCATION_ID=us-central1,PROJECT_ID=<PROJECT_ID>,QUEUE_ID=cola-cloud-task-tutorial,URL_FUNCTION=https://us-central1-<PROJECT_ID>.cloudfunctions.net/funcion-tutorial-consumidor
+$ gcloud functions deploy function-produce-http --entry-point produce --runtime python39 --trigger-http --allow-unauthenticated --memory 128MB --region us-central1 --timeout 60 --min-instances 0 --max-instances 1 --service-account "miso-cloud-producer@miso-cloud-native-414617.iam.gserviceaccount.com" --set-env-vars LOCATION_ID=us-central1,PROJECT_ID=miso-cloud-native-414617,QUEUE_ID=queue-cloud-task,URL_FUNCTION=https://us-central1-miso-cloud-native-414617.cloudfunctions.net/function-consume-http
+```
